@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <script src="../js/system.js"></script>
+</head>
+<body>
+  <script>
+  SystemJS.config({
+    map: {
+      'plugin-babel': '../js/plugin-babel.js',
+      'systemjs-babel-build': '../js/systemjs-babel-browser.js'
+    },
+    transpiler: 'plugin-babel'
+  });
+
+  SystemJS.import("math.js").then(function (m) {
+    alert("2pi = " + m.sum(m.pi, m.pi));
+  });
+
+  SystemJS.import('./es6-file.js').then(function(m) {
+    console.log(new m.q().es6); // yay
+  });
+  </script>
+</body>
+</html>
