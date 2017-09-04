@@ -20,6 +20,30 @@
   SystemJS.import('./es6-file.js').then(function(m) {
     console.log(new m.q().es6); // yay
   });
+
+  SystemJS.import('./user.js').then(function(m) {
+    var user = new m.User('zhuyu')
+    var boss = new m.Boss('honghui', 'boss')
+
+    console.log(user.name); // zhuyu
+    console.log(boss.level); // boss
+
+    console.log(user.hello());
+    console.log(boss.hello());
+    console.log(boss.getLevel());
+
+    console.log(boss.give('apples'))
+
+    var managers = new Array()
+    managers.push(new m.Boss('1', '1'))
+    managers.push(new m.Boss('2', '2'))
+    managers.push(new m.Boss('3', '3'))
+    managers.push(new m.Boss('4', '4'))
+
+    managers.forEach(function(item, index) {
+      console.log(index + ': ' + item.name + ' - ' + item.level)
+    })
+  });
   </script>
 </body>
 </html>
